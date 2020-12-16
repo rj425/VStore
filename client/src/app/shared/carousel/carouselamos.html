@@ -1,0 +1,35 @@
+<div class="ng2-carouselamos-container">
+  <div
+    class="ng2-carouselamos-wrapper"
+    [style.width.%]=width
+    (mousedown)="onMousedown($event)"
+    (mousemove)="onMousemove($event,list.scrollWidth,list.offsetWidth)"
+    (mouseup)="onMouseup($event,list)"
+    (mouseleave)="onMouseup($event,list)"
+  >
+    <div
+      class="ng2-carouselamos"  #list
+      [attr.startPress]="startPress"
+      [style.transition]="startPress > 0 ? 'none' : '-webkit-transform 0.8s'"
+      [style.webkitTransition]="startPress > 0 ? 'none' : '-webkit-transform 0.8s'"
+      [style.transform]="'translateX('+amount+'px)'"
+      [style.webkitTransform]="'translateX('+amount+'px)'"
+    >
+      <ng-template
+        *ngFor="let item of items; let i = index"
+        [ngTemplateOutlet]="$item"
+        [ngTemplateOutletContext]="{$implicit: item, index: i, selectedIndex: childIndex}"
+      ></ng-template>
+    </div>
+  </div>
+  <div class="controls" *ngIf="$prev || $next">
+    <button *ngIf="$prev" (click)="scroll(false,list,list.scrollWidth,list.offsetWidth)" 
+            [disabled]="amount >= 0">
+      <ng-template [ngTemplateOutlet]="$prev"></ng-template>
+    </button>
+    <button *ngIf="$next" (click)="scroll(true,list,list.scrollWidth,list.offsetWidth)" 
+            [disabled]="disableNext">
+      <ng-template [ngTemplateOutlet]="$next"></ng-template>
+    </button>
+  </div>
+</div>

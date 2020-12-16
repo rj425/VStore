@@ -1,0 +1,148 @@
+body{
+	font-family: Roboto,"Helvetica Neue",sans-serif;
+	}
+li{
+	margin:2px 1px;
+	 display: inline!important;
+}
+.navArrow{
+   border-radius: 100px;
+   background-color: ghostwhite;
+   margin-top:40px; 
+   /*padding: 19px 6px;*/
+}
+
+.items{
+	margin: 10% 12%;
+	background: rgb(50,50,50);
+	border-radius: 5px;
+	margin-top:55px;
+}
+.ng2-carouselamos{
+	padding: 10px;
+	
+}
+img{
+	max-height:400px!important;
+	max-width:310px!important;
+	height: auto;
+}
+.swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+}
+.swiper-wrapper {
+    /*margin-left: 50px;*/
+    /*flex-direction: row;*/
+	/*justify-content:center;*/
+    margin-right: 0px!important;
+    height: 450px;
+    width: 410px;
+}
+swiper{
+	position:relative;
+	-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+}
+.sellerName{
+	font-weight: 200;
+    float: right;
+    font-size: small;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    color: black;
+}
+.container{
+
+    width: 80%;
+    display:flex;
+	flex-direction: row;
+	/*align-items: center;*/
+	margin-top:8%; 
+    margin-right: 10%;
+    margin-left: 12%;
+}
+h3{
+	font-size:30px!important;
+	font-family: "Helvetica Neue",sans-serif;
+	margin-top:0px!important;
+	margin-bottom:2%;
+	font-weight:300!important;
+	font-color:#C1CEEB;
+}
+.price{
+	font-family: 'Roboto';
+	font-weight: 500;
+	color: rgba(0,0,0,.38);
+	padding: 1% 0%;
+}
+.productDescription{
+    margin-left: 5%;
+    width: 55%;
+}
+.passage{
+	padding: 1% 0%;
+	width: 95%;
+    line-height: 1.6em;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size:13px;
+    text-align: justify;
+
+   /* padding:2%;
+	width: 90%;
+	margin:2% 3%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
+    
+}
+
+table {  
+    color: #333;
+    width: 97%; 
+    border-collapse: 
+    collapse; border-spacing: 0; 
+    margin: 2% 0%;
+}
+
+caption{
+	text-align: left;
+    height: 25px;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: 14px!important;
+}
+
+td, th {  
+    border: 1px solid transparent; /* No more visible border */
+    height: 30px; 
+    transition: all 0.3s;  /* Simple transition for hover effect */
+}
+
+th {  
+    background: #DFDFDF;  /* Darken header a bit */
+    font-weight: bold;
+}
+
+td {  
+    background: #FAFAFA;
+    text-align: center;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size:14px!important;
+}
+tr:nth-child(even) td { background: #F1F1F1; }   
+
+/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */        
+tr:nth-child(odd) td { background: #FEFEFE; }  
+
+
+.confirm{
+    vertical-align: middle;
+}
+
+.confirm:hover{
+    cursor: pointer;
+}

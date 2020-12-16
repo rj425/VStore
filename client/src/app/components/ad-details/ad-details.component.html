@@ -1,0 +1,56 @@
+<div class="container" *ngIf="Jresponse">
+<div class="productImages">
+
+	<swiper [config]="config">
+	    <div class="swiper-wrapper">
+	    	<div class="swiper-slide" *ngFor="let image of images">
+		        <img src="{{API+image.replace('.','')}}">
+	        </div>
+	    	<div class="swiper-slide" *ngIf="images.length===0">
+		        <img src="assets/images/imageNotFound.png">
+	        </div>
+	    </div>
+	    <div class="swiper-pagination"></div>
+	    <div class="swiper-button-next"></div>
+	    <div class="swiper-button-prev"></div>
+	</swiper>
+
+</div>
+
+<div class="productDescription" *ngIf="product">
+	<h3>{{product.name}}</h3>
+	<hr>
+	<div class="price">Price: Rs {{product.price}}<span class="sellerName">Posted by: {{Jresponse.sellerName}}</span></div>
+	<div *ngIf="product.description" class="passage">{{product.description}}</div>
+	<br>
+	<div *ngIf="buttonReady">
+	<button md-raised-button color="primary" [disabled]="disableButton" (click)="handleButtonEvent()">
+	{{buttonName}}
+	</button>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span [hidden]="!sellProduct">
+			<md-select placeholder="Select buyer" [(ngModel)]="selectedBuyer" [style.width.px]="200">
+			<md-option *ngFor="let buyer of Jresponse.interestedBuyers" [value]="buyer">
+			{{ buyer.buyerName}}
+			</md-option>
+			</md-select>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<md-icon class="confirm" (click)="addTransaction()">done</md-icon>
+		</span>
+	</div>
+	<br>
+	<div *ngIf="product.specfications">
+	<table >
+		<caption class="price">Product Specifications : </caption>
+		<tr *ngFor="let x of Jresponse.specifications">
+			<td>{{x.key}}</td>
+			<td>{{x.value}}</td>
+		</tr>
+	</table>
+	</div>
+
+
+</div>
+</div>
+
+

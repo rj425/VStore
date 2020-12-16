@@ -1,0 +1,92 @@
+<md-progress-bar mode="indeterminate" *ngIf="showProgressBar==true"></md-progress-bar>
+<div class="headerContainer">
+	<br>
+	<h2 class="mainHeading">Post an Advertisement</h2>
+</div>
+<br>
+<div class="container">
+	<form [formGroup]="advertisementForm">
+		<div>
+		  	<md-input-container>
+			  	<input mdInput placeholder="Product Name"  type="text" formControlName="itemName"></md-input-container>
+		  	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		  	<md-input-container>
+			  	<input placeholder="Price" mdInput type="number" formControlName="price">	
+		  	</md-input-container>
+		  	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		  	<md-select placeholder="Sale/Rent"
+		  				formControlName="saleRent">
+			  	<md-option *ngFor="let selectedOption of saleOption" 
+			  				[value]="selectedOption.value">
+			  				{{selectedOption.display}}
+			  	</md-option>
+			</md-select>
+	  	</div>
+	  	<span class="label">Add Search Tags</span>
+	  	<br>
+		<div class="tagInput">
+			<div class="tag" *ngFor="let tag of productTags;let i=index">
+				<span>&nbsp;</span>
+				<span>{{tag}}</span>
+				<span>&nbsp;</span>
+				<a class="material-icons tagButton" (click)="removeTag(i)">clear</a>
+				<span>&nbsp;</span>
+			</div>
+			<span>&nbsp;</span>
+			<input type="text" placeholder="+ Tag" 
+					formControlName="enteredTag" 
+					[mdAutocomplete]="auto"
+					(keyup.enter)="addTag(advertisementForm.controls.enteredTag.value)"
+					(keyup.backspace)="deleteLastTag()">
+		</div>
+		<md-autocomplete #auto="mdAutocomplete">
+			<md-option *ngFor="let tag of filteredSearchTags | async" 
+						[value]="tag.tag"
+						(click)="addTag(tag.tag)">
+			{{tag.tag}}
+			</md-option>
+		</md-autocomplete>
+		<br>
+		<md-input-container>
+      		<textarea mdInput placeholder=" Product Description" 
+      					formControlName="descriptionPassage">
+			</textarea>
+    	</md-input-container>
+    	<span class="label">Add Product Images</span>
+		<br>
+		<image-upload
+               [max]="5"
+               [extensions] = "['jpg','png','jpeg']"
+               [maxFileSize]="3000000"
+               (onFileUploadFinish)="imageUploaded($event)"
+               (onRemove)="imageRemoved($event)"
+	    >
+	    </image-upload>
+	    <br><br>
+	  	<button type="button" md-button class="specButton" color="primary" 
+	  			(click)="addPair()">Add Product Specifications
+	  	</button>
+	  	<br>
+	  	<div formArrayName="specifications">
+		  	<div *ngFor="let spec of advertisementForm.controls.specifications.controls;let i =index">
+		  		<div formGroupName={{i}}>
+		  			<md-input-container>
+				  		<input mdInput type="text" 
+				  				placeholder="Spec. Name" 
+				  				formControlName="key">
+				  	</md-input-container>
+				  	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				  	<md-input-container>
+				  		<input mdInput type="text" 
+				  				placeholder="Spec. Value" 
+				  				formControlName="value"> 
+				  	</md-input-container>
+			  		<i class="material-icons" (click)="removePair(i)">cancel</i>
+		  		</div>
+		  	</div>
+	  	</div>
+	  	<br>
+	  	<button md-raised-button color="primary" [disabled]="!advertisementForm.valid" (click)="onSubmit()">Submit</button>
+	  	<br><br>		
+	</form>
+</div>

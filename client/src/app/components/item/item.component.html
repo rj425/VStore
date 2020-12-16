@@ -1,0 +1,37 @@
+<div class="item" (click)="goToItemDetailsPage($event,item._id)">
+	<span>{{item.itemName}}</span><br>			
+	<div *ngIf="item.description.imagesURL.length!==0" class="imageContainer"
+		 [style.width.px]="imageWidth"
+		 [style.height.px]="imageHeight">
+		<img class="itemImage" 
+			 src="{{API+item.description.imagesURL[0].replace('.','')}}" 
+			 [style.max-width.px]="imageWidth"
+			 [style.max-height.px]="imageHeight">
+	</div>
+	<div *ngIf="item.description.imagesURL.length===0" class="imageContainer"
+		 [style.width.px]="imageWidth"
+		 [style.height.px]="imageHeight">
+		<img class="itemImage" 
+			 src="assets/images/imageNotFound.png"
+			 [style.max-width.px]="imageWidth"
+			 [style.max-height.px]="imageHeight">
+	</div>
+	<br>
+	<div class="itemInfo">
+		<div class="itemPrice">
+			<span>{{item.tags.indexOf('sale')==-1?'For Rent':'For Sale'}}</span>
+			<br>
+			<span>Rs. {{item.description.price}}</span>
+		</div>
+		<div class="spacer">			
+		</div>
+		<div class="interestedBuyers">
+			<img src="assets/images/favorite.png" class="favoriteImage" 
+				 mdTooltip="Interested Buyers">
+			<div class="interestedBuyerNumber"
+				 mdTooltip="Interested Buyers">
+				 {{item.interestedBuyers.length}}
+			</div>
+		</div>
+	</div>
+</div>

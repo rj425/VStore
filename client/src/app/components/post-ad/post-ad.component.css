@@ -1,0 +1,118 @@
+md-progress-bar{
+    position: fixed;
+    z-index: 2;
+    top:64px;
+    left: 0;
+    width: 100% !!important;
+}
+
+.headerContainer{
+    padding: 10px 20px 20px 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.mainHeading{
+    font-size: 30px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.container{
+    width: 70%;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.tagInput{
+    display: flex;
+    width: 100%;
+    float: left;
+    height: 40px;
+    line-height: 32px;
+    color: #696e79;
+    box-sizing: content-box;
+    padding: 0px 3px 0px 3px;
+    border: 0.5px solid #d5d6d9;
+    border-radius: 4px 4px 4px 4px;
+    background: #fafafa;
+}
+
+.tagInput input{
+    width: 100%;
+    outline: 0;
+    box-shadow: 0px;
+    border-width: 0px;
+    background-color: #fafafa;
+    font-size: 16px;
+}
+
+.tag{
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    font-size: 16px;
+    margin:3px 2px 3px 2px;
+    background-color: #ebebef;
+    white-space: nowrap;    
+}
+
+.tag:hover{
+    cursor:default;
+}
+
+.tagButton{ 
+    margin-top: 9px;
+    font-size: 16px;
+}
+
+.tagButton:hover{
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.tagHeading{
+    color: #bdbdbd;
+    font-weight: 20px;
+}
+
+.tagHeading:hover{
+    color: #bdbdbd;
+    font-weight: 20px;
+    cursor: default;
+}
+
+md-option{
+    height: 38px;
+    line-height: 38px;
+}
+
+.specButton{
+	background: whitesmoke;
+}
+
+textarea{
+	display:block;
+    height: 50px;
+    margin-top: 10px;
+    border-color: rgba(0,0,0,.12);
+}
+
+i{
+	font-size:medium;
+}
+
+.label{
+	color: rgba(0,0,0,.4);
+}
+
+.material-icons:hover{
+    cursor: pointer;
+}

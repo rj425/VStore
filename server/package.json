@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "VStore Backend Server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "moment": "^2.18.1",
+    "mongoose": "^4.11.10",
+    "morgan": "*",
+    "nodemailer": "^4.0.1",
+    "passport": "*",
+    "passport-jwt": "^3.0.0",
+    "request": "^2.81.0",
+    "sendgrid": "^5.2.2",
+    "underscore": "^1.8.3"
+  },
+  "author": "Rishabh Jain",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

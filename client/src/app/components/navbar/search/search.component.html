@@ -1,0 +1,29 @@
+<span *ngIf="visibility">
+	<form>
+		<div class="searchBar">
+			<div class="tag" *ngFor="let tag of searchTags;let i=index">
+				<span>&nbsp;</span>
+				<span class="tagLabel">{{tag}}</span>
+				<span>&nbsp;</span>
+				<a class="material-icons tagButton" (click)="removeTag(i)">clear</a>
+				<span>&nbsp;</span>
+			</div>
+			<span>&nbsp;</span>
+			<input type="text" placeholder="+ Tag" 
+					[formControl]="enteredTag" 
+					[mdAutocomplete]="auto"
+					(keyup.enter)="addTag(enteredTag.value)"
+					(keyup.backspace)="deleteLastTag()">
+		</div>
+		<a class="searchSubmit" color="primary" (click)="searchItems()"
+				(keyup.enter)="searchItems()">
+			<i class="material-icons">search</i>
+		</a>
+	</form>
+	<md-autocomplete #auto="mdAutocomplete">
+		<md-option *ngFor="let searchTag of filteredSearchTags | async" [value]="searchTag.tag" 
+					(click)="addTag(searchTag.tag)">
+			{{searchTag.tag}}
+		</md-option>
+	</md-autocomplete>
+</span>

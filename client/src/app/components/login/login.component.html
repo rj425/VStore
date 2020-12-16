@@ -1,0 +1,16 @@
+<div class="container">
+	<h2 class="mainHeading">Login</h2>
+	<br>
+</div>
+<md-progress-bar mode="indeterminate" *ngIf="showProgressBar"></md-progress-bar>
+<br><br>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+	<md-input-container>
+  		<input mdInput placeholder="Username" formControlName="username" type="text">
+	</md-input-container>
+	<md-input-container>
+  		<input mdInput placeholder="Password" formControlName="password" type="password">
+	</md-input-container>
+	<br>
+	<button md-raised-button type="submit" [disabled]="!loginForm.valid">Login</button>
+</form>

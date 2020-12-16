@@ -1,0 +1,110 @@
+<md-progress-bar mode="indeterminate" *ngIf="showProgressBar"></md-progress-bar>
+<div class="container">
+	<div class="listContainer">
+		<md-tab-group [selectedIndex]="selectedTabIndex" (selectChange)="checkForEnteredTags()">
+		  	<md-tab *ngIf="isLoggedIn" label="Advertisements">
+		  		<div class="advertisements">
+		  			<span>Recent Ads</span>
+		  			<hr>
+			  		<div *ngIf="recentItems.length!==0">
+						<div ng2-carouselamos class="slidesWrapper"
+							[width]=88
+							[items]="recentItems"
+							[$item]="itemTemplate"
+							[$prev]="prevTemplate"
+							[$next]="nextTemplate"
+							(onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index">
+						</div>
+						<ng-template #prevTemplate>
+							<img src="assets/images/navArrowLeft.png" class="left" id="left" />
+						</ng-template>
+						<ng-template #nextTemplate >
+							<img src="assets/images/navArrowRight.png" class="right" id="right" />
+						</ng-template>
+						<ng-template #itemTemplate let-item let-i="index" class="itemContainer">
+					  		<app-item [item]="item" 
+					  				  [imageHeight]="120" 
+					  				  [imageWidth]="120">
+					  		</app-item>	
+						</ng-template>
+					</div>
+					<div *ngIf="recentItems.length==0" class="informationContainer">
+						<span>{{recentAdMessage}}</span>
+					</div>
+					<br>
+					<div *ngIf="isLoggedIn">
+				  		<span>Your Ads</span>
+				  		<hr>
+						<div *ngIf="userPostedItems.length!==0">
+				  		<div ng2-carouselamos class="slidesWrapper"
+							[width]=88
+							[items]="userPostedItems"
+							[$item]="itemTemplate"
+							[$prev]="prevTemplate"
+							[$next]="nextTemplate"
+							(onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index">
+						</div>
+						<ng-template #prevTemplate>
+							<img src="assets/images/navArrowLeft.png" class="left" id="left" />
+						</ng-template>
+						<ng-template #nextTemplate >
+							<img src="assets/images/navArrowRight.png" class="right" id="right" />
+						</ng-template>
+						<ng-template #itemTemplate let-item let-i="index" class="itemContainer">
+					  		<app-item [item]="item" 
+					  				  [imageHeight]="120" 
+					  				  [imageWidth]="120">
+					  		</app-item>	
+						</ng-template>
+					</div>
+					</div>
+					<div *ngIf="userPostedItems.length==0" class="informationContainer">
+						<span>{{userAdMessage}}</span>
+					</div>
+				</div>
+			</md-tab>
+
+			<md-tab label="All Ads">
+			  	<div *ngIf="allItems.length!==0" class="searchResults">
+			  		<md-grid-list cols="5" 
+			  					  rowHeight="300px">
+				  		<md-grid-tile *ngFor="let item of allItems">
+					  		<app-item [item]="item" 
+					  				  [imageHeight]="120" 
+					  				  [imageWidth]="120">
+					  		</app-item>		  			
+				  		</md-grid-tile>
+				  	</md-grid-list>
+			  	</div>
+			  	<div *ngIf="noItemMessage" class="informationContainer">
+					<span>{{noItemMessage}}</span>
+				</div>
+			</md-tab>
+
+			<md-tab label="Search Results">
+			  	<div *ngIf="filteredItems.length!==0" class="searchResults">
+			  		<md-grid-list cols="5" 
+			  					  rowHeight="300px">
+				  		<md-grid-tile *ngFor="let item of filteredItems">
+					  		<app-item [item]="item" 
+					  				  [imageHeight]="120" 
+					  				  [imageWidth]="120">
+					  		</app-item>		  			
+				  		</md-grid-tile>
+				  	</md-grid-list>
+			  	</div>
+			  	<div *ngIf="searchResultMessage" class="informationContainer">
+					<span>{{searchResultMessage}}</span>
+				</div>
+			</md-tab>
+		</md-tab-group>
+	</div>
+	<div class="sideContainer">
+		<button md-raised-button color="primary" (click)="goToPostAd()">POST AD</button>
+		<br>
+		<div class="userAdCounter" *ngIf="isLoggedIn">
+			<div class="adCounterHeading">YOUR AD COUNTER</div>
+			<div class="adCounter">{{userPostedItems.length}}</div>
+		</div>
+	</div>
+</div>

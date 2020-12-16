@@ -1,0 +1,25 @@
+.spacer {
+/*    flex: flex-grow flex-shrink flex-basis*/
+    flex: 1 1 auto;
+}
+
+app-search{
+	width: 700px;
+}
+
+.active{
+	background: #37479f;
+	border-radius: 2px;
+}
+
+md-toolbar{
+	position: fixed;
+	z-index: 2;
+	top:0;
+	left: 0;
+	width: 100% !!important;
+}
+
+.logo{
+	width: 80px;
+}
